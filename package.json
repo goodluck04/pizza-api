@@ -1,0 +1,21 @@
+{
+  "name": "pizza-ordering-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/goodluck04/pizza-ordering-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "prisma": "^5.6.0"
+  }
+}
