@@ -1,8 +1,9 @@
 import bcryptjs from "bcryptjs";
 import prisma from "../utils/db.js";
+import { ErrorHandler } from "../utils/error.js";
 
 // create user
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   try {
     // getting name,email and password from body
     const { name, email, password, address } = req.body;
@@ -38,6 +39,7 @@ export const signup = async (req, res) => {
     // after saving user data send the success message to the user
     return res.status(201).json({ message: "User created successfully" });
   } catch (error) {
-    res.status(500).json(error.message);
+    // here we are using next middleware to handle error
+    next(ErrorHandler(550, `[SIGNUP ERROR]: ${error}`));
   }
 };
