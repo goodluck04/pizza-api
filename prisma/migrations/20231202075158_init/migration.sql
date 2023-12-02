@@ -22,7 +22,6 @@ CREATE TABLE "Pizza" (
 -- CreateTable
 CREATE TABLE "Order" (
     "id" SERIAL NOT NULL,
-    "orderId" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
     "pizzaType" TEXT NOT NULL,
     "quantity" INTEGER NOT NULL,
@@ -39,9 +38,6 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Pizza_type_key" ON "Pizza"("type");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Order_orderId_key" ON "Order"("orderId");
 
 -- AddForeignKey
 ALTER TABLE "Order" ADD CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

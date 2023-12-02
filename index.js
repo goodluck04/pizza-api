@@ -5,6 +5,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 // import auth router
 import authRouter from "./routes/auth.routes.js";
+import { ErrorHandler } from "./utils/error.js";
+import pizzaRouter from "./routes/pizza.routes.js";
+import orderRouter from "./routes/order.routes.js";
 
 // defined the port
 const PORT = process.env.PORT || 8080;
@@ -32,35 +35,36 @@ app.listen(PORT, () => {
 });
 
 // testing api
-app.get("/test", (req, res, next) => {
+app.get("/test", (req, res) => {
   res.status(200).json({
     success: true,
     message: "API is working",
   });
 });
 
-// routes for authentication
-app.use("/api/v1/auth", authRouter);
+// routes for auth,pizza and order
+app.use("/api", authRouter);
+app.use("/api", pizzaRouter);
+app.use("/api", orderRouter);
 
-// Error handling middleware
+
+// Error handling middleware 
 app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+  if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
     // Handle JSON parsing error
-    return res.status(400).json({ error: 'Invalid JSON syntax' });
+    return next(ErrorHandler(400, "Invalid JSON syntax"));
   }
-
   // Forward other errors to the next middleware
   next(err);
 });
 
-
 // adding middleware for handling error as next()
-app.use((req, res, next) => {
-  const statusCode = err.message || 500;
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   return res.status(statusCode).json({
-    success: false,
-    statusCode,
-    message,
+      success: false,
+      statusCode,
+      message,
   });
 });

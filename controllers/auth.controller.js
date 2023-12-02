@@ -1,6 +1,7 @@
 import bcryptjs from "bcryptjs";
 import prisma from "../utils/db.js";
 import { ErrorHandler } from "../utils/error.js";
+import jwt from "jsonwebtoken";
 
 // create user
 export const signup = async (req, res, next) => {
@@ -10,7 +11,7 @@ export const signup = async (req, res, next) => {
 
     //   if any if fields are missing send message all fields are required
     if (!(name || email || password || address)) {
-      return res.status(400).json({ message: "All fields are required!" });
+      return next(ErrorHandler(400, "All fields are required!"));
     }
 
     // check if user already exist with that email
@@ -21,7 +22,7 @@ export const signup = async (req, res, next) => {
     });
     // if user exist send message and return
     if (findUser) {
-      return res.status(400).json({ message: "Email already exist" });
+      return next(ErrorHandler(400, "Email already exist"));
     }
 
     // hashing the password with salt 10
@@ -41,5 +42,41 @@ export const signup = async (req, res, next) => {
   } catch (error) {
     // here we are using next middleware to handle error
     next(ErrorHandler(550, `[SIGNUP ERROR]: ${error}`));
+  }
+};
+
+export const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    //   if any if fields are missing send message all fields are required
+    if (!(email || password)) {
+      return next(new (400, "all fields required")());
+    }
+    // searching in db for that valid user
+    const validUser = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+    // if user not foud in user is not  db
+    if (!validUser) return next(ErrorHandler(404, "User not found!"));
+    // comparing user password with validUser password
+    const validPassword = bcryptjs.compareSync(password, validUser.password);
+    // if password do no match then send error
+    if (!validPassword) return next(ErrorHandler(401, "Wrong credentials!"));
+    // if password match then authenticate the user
+    const token = jwt.sign({ id: validUser.id }, process.env.JWT_SECRET);
+    // remove password before sending to client
+    // destructure validUser then send data without password
+    const { password: pass, ...rest } = validUser; //it will avoid password in res
+
+    // sending the user and cookie/token to the user
+    res
+      .cookie("access_token", token, { httpOnly: true })
+      .status(200)
+      .json(rest);
+  } catch (error) {
+    next(error);
   }
 };
