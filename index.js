@@ -22,12 +22,8 @@ app.use(express.json());
 // cookie parsing with this
 app.use(cookieParser());
 
-// cors
-app.use(
-  cors({
-    origin: process.env.ORIGIN,
-  })
-);
+// cors 
+app.use(cors());
 
 // listing to port 8080
 app.listen(PORT, () => {
@@ -47,8 +43,7 @@ app.use("/api", authRouter);
 app.use("/api", pizzaRouter);
 app.use("/api", orderRouter);
 
-
-// Error handling middleware 
+// Error handling middleware
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
     // Handle JSON parsing error
@@ -63,8 +58,8 @@ app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   return res.status(statusCode).json({
-      success: false,
-      statusCode,
-      message,
+    success: false,
+    statusCode,
+    message,
   });
 });
