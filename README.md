@@ -71,8 +71,6 @@ JWT_SECRET="kwnfwknfoknfklw"
 
         **Request Body Example**
 
-```
-
     {
     "name": "test",
     "email": "test@gmail.com",
