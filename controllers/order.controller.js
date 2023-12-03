@@ -100,7 +100,7 @@ export const updateOrder = async (req, res, next) => {
       },
     });
 
-    return res.status(200).json("order updated successfully");
+    return res.status(201).json("order updated successfully");
   } catch (error) {
     next(error);
   }
@@ -128,7 +128,7 @@ export const deleteOrder = async (req, res, next) => {
       },
     });
 
-    return res.status(200).json("order deleted succesfully");
+    return res.status(200).json("order cancel succesfully");
   } catch (error) {
     next(error);
   }

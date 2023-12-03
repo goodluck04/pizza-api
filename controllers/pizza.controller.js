@@ -10,6 +10,8 @@ export const getAllPizzas = async (req, res, next) => {
   }
 };
 
+// only for testing purpose 
+// create pizza its unsecured 
 export const createPizza = async (req, res, next) => {
   try {
     const { type, description, price} = req.body;

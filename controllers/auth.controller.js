@@ -22,7 +22,7 @@ export const signup = async (req, res, next) => {
     });
     // if user exist send message and return
     if (findUser) {
-      return next(ErrorHandler(400, "Email already exist"));
+      return next(ErrorHandler(409, "Email already exist"));
     }
 
     // hashing the password with salt 10
@@ -41,7 +41,7 @@ export const signup = async (req, res, next) => {
     return res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     // here we are using next middleware to handle error
-    next(ErrorHandler(550, `[SIGNUP ERROR]: ${error}`));
+    next(error);
   }
 };
 
