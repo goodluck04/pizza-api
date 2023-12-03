@@ -77,10 +77,10 @@ JWT_SECRET="kwnfwknfoknfklw"
 ```
 
 {
-"name": "test",
-"email": "test@gmail.com",
-"address": "Baker Street, New Delhi",
-"password": "12345678"
+    "name": "test",
+    "email": "test@gmail.com",
+    "address": "Baker Street, New Delhi",
+    "password": "12345678"
 }
 
 ```
@@ -104,8 +104,8 @@ JWT_SECRET="kwnfwknfoknfklw"
 ```
 
 {
-"email": "test@gmail.com",
-"password": "12345678"
+    "email": "test@gmail.com",
+    "password": "12345678"
 }
 
 ```
