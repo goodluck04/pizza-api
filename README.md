@@ -13,7 +13,7 @@ Welcome to the documentation for Pizza API! This RESTful API has been developed 
 - **Prisma with PostgreSQL:** The database toolkit and relational database management system, ensuring secure and efficient data storage.
 - **Node.js:** The server-side runtime environment known for its non-blocking I/O and event-driven architecture.
 - **JSON Web Token (JWT):** Used for secure user authentication and authorization.
-- **bcryptjs:** A library for hashing passwords to enhance security.
+- **Bcryptjs:** A library for hashing passwords to enhance security.
 
 ## Enviroment Variables
 
@@ -63,7 +63,11 @@ JWT_SECRET="kwnfwknfoknfklw"
     - `email` (body): Email address of the new user.
     - `password` (body): Password of the new user.
     - `address` (body): Address of the new user.
-  - **Responses:** - `201 Created`: User successfully created. - `400 Bad Request`: All fields are required!. - `409 Conflict`: User with the provided username or email already exists. - `500 Internal Server Error`: Server error.
+  - **Responses:** 
+  - `201 Created`: User successfully created. 
+  - `400 Bad Request`: All fields are required!. 
+  - `409 Conflict`: User with the provided username or email already exists. 
+  - `500 Internal Server Error`: Server error.
 
         **Request Body Example**
 
@@ -85,7 +89,12 @@ JWT_SECRET="kwnfwknfoknfklw"
   - **Parameters:**
     - `email` (body): Email address of the user.
     - `password` (body): Password of the user.
-  - **Responses:** - `200 Created`: Return user and token. - `400 Bad Request`: All fields are required!. - `401 Unauthorized`: Wrong Credentials. - `404 Conflict`: User email does not exist. - `500 Internal Server Error`: Internal Server error.
+  - **Responses:** 
+  - `200 Created`: Return user and token. 
+  - `400 Bad Request`: All fields are required!. 
+  - `401 Unauthorized`: Wrong Credentials. 
+  - `404 Conflict`: User email does not exist. 
+  - `500 Internal Server Error`: Internal Server error.
 
              **Request Body Example**
 
@@ -121,7 +130,12 @@ JWT_SECRET="kwnfwknfoknfklw"
     - `address` (body): Delivery address.
     - `totalPrice` (body): Total price of the order.
     - `pizzaType` (body): Type of pizza.
-  - **Responses:** - `201 OK`: Order pizza data. - `400 Bad Request`: All fields are required!. - `400 Unauthorized`: Unauthorized. - `404 Not Found`: Pizza Type with this name not found. - `500 Internal Server Error`: Internal Server error.
+  - **Responses:** 
+  - `201 OK`: Order pizza data. 
+  - `400 Bad Request`: All fields are required!. 
+  - `400 Unauthorized`: Unauthorized. 
+  - `404 Not Found`: Pizza Type with this name not found. 
+  - `500 Internal Server Error`: Internal Server error.
 
          **Request Body Example**
 
@@ -190,4 +204,4 @@ JWT_SECRET="kwnfwknfoknfklw"
   - `401 Unauthorized`: Unauthorized.
   - `404 Not Found`: Order with the provided ID not found.
   - `500 Internal Server Error`: Server error.
-````
+
