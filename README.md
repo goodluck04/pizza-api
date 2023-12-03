@@ -71,13 +71,18 @@ JWT_SECRET="kwnfwknfoknfklw"
 
     **Request Body Example**
 
-````
+
+- Request Body Example
+
+```
+
 {
 "name": "test",
 "email": "test@gmail.com",
 "address": "Baker Street, New Delhi",
 "password": "12345678"
 }
+
 ```
 #### Login
 
@@ -94,13 +99,15 @@ JWT_SECRET="kwnfwknfoknfklw"
   - `404 Conflict`: User email does not exist. 
   - `500 Internal Server Error`: Internal Server error.
 
-    **Request Body Example**
+- Request Body Example
 
 ```
+
 {
 "email": "test@gmail.com",
 "password": "12345678"
 }
+
 ```
 
 ### 2. Pizza Management APIs:
@@ -134,16 +141,17 @@ JWT_SECRET="kwnfwknfoknfklw"
   - `404 Not Found`: Pizza Type with this name not found. 
   - `500 Internal Server Error`: Internal Server error.
 
-     **Request Body Example**
+- Request Body Example
 
 ```
-    {
+{
     "user_id":1,
     "quantity": 10,
     "address": "New Delhi",
     "totalPrice":100,
     "pizzaType": "small"
-    }
+}
+    
 ```
 
 #### Retrieve All Orders
