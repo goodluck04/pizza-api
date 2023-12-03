@@ -10,7 +10,7 @@ export const signup = async (req, res, next) => {
     const { name, email, password, address } = req.body;
 
     //   if any if fields are missing send message all fields are required
-    if (!(name || email || password || address)) {
+    if (!(name && email && password && address)) {
       return next(ErrorHandler(400, "All fields are required!"));
     }
 
@@ -50,7 +50,7 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
 
     //   if any if fields are missing send message all fields are required
-    if (!(email || password)) {
+    if (!(email && password)) {
       return next(new (400, "all fields required")());
     }
     // searching in db for that valid user

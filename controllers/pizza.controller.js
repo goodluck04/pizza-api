@@ -9,3 +9,22 @@ export const getAllPizzas = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createPizza = async (req, res, next) => {
+  try {
+    const { type, description, price} = req.body;
+
+    
+
+    const pizza = await prisma.pizza.create({
+      data:{
+        type,
+        description,
+        price
+      }
+    });
+    return res.status(200).json(pizza);
+  } catch (error) {
+    next(error);
+  }
+};

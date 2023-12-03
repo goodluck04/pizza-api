@@ -1,11 +1,18 @@
 import express from "express";
-import { createOrder, deleteOrder, fetchOrder, updateOrder, getOrder } from "../controllers/order.controller.js";
+import {
+  createOrder,
+  deleteOrder,
+  fetchAllOrder,
+  updateOrder,
+  getOrder,
+} from "../controllers/order.controller.js";
+import { verifyToken } from "../utils/verifyUser.js";
 const orderRouter = express.Router();
 
 // pizza routes
-orderRouter.post("/order", createOrder);
-orderRouter.get("/orders", fetchOrder);
-orderRouter.put("/order/:id", updateOrder);
-orderRouter.delete("/order/:id", deleteOrder);
+orderRouter.post("/order", verifyToken, createOrder);
+orderRouter.get("/orders", verifyToken, fetchAllOrder);
+orderRouter.put("/order/:id", verifyToken, updateOrder);
+orderRouter.delete("/order/:id", verifyToken, deleteOrder);
 orderRouter.get("/order/:id", getOrder);
 export default orderRouter;
