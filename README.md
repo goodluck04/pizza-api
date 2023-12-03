@@ -17,7 +17,7 @@ Welcome to the documentation for Pizza API! This RESTful API has been developed 
 
 ## Enviroment Variables
 
--create .env file in the root directory.
+- create .env file in the root directory.
 
 ```
 
@@ -39,14 +39,14 @@ JWT_SECRET="kwnfwknfoknfklw"
 
 | METHOD   | ROUTE                    | FUNCTIONALITY            | ACCESS                |
 | -------- | ------------------------ | ------------------------ | --------------------- |
-| _POST_   | `/api/signup/`           | _Register new user_      | _All users_           |
-| _POST_   | `/api/login/`            | _Login user_             | _All users_           |
-| _GET_    | `/api/pizzas/`           | _Get Pizza List_         | _All users_           |
-| _POST_   | `/api/order`             | _Place an order_         | _Authenticated users_ |
-| _GET_    | `/api/orders/`           | _List all orders made_   | _Specific user_       |
-| _PUT_    | `/api/order/{order_id}/` | _Update an order_        | _Specific users_      |
-| _GET_    | `/api/order/{order_id}/` | _Get user's orders_      | _Specific users_      |
-| _DELETE_ | `/api/order/{order_id}/` | _Delete/Remove an order_ | _Specific users_      |
+| _POST_   | ```/api/signup/```           | _Register new user_      | _All users_           |
+| _POST_   | ```/api/login/```            | _Login user_             | _All users_           |
+| _GET_    | ```/api/pizzas/```           | _Get Pizza List_         | _All users_           |
+| _POST_   | ```/api/order```             | _Place an order_         | _Authenticated users_ |
+| _GET_    | ```/api/orders/```           | _List all orders made_   | _Specific user_       |
+| _PUT_    | ```/api/order/{order_id}/``` | _Update an order_        | _Specific users_      |
+| _GET_    | ```/api/order/{order_id}/``` | _Get user's orders_      | _Specific users_      |
+| _DELETE_ | ```/api/order/{order_id}/``` | _Delete/Remove an order_ | _Specific users_      |
 
 ## API Endpoints
 
@@ -66,8 +66,8 @@ JWT_SECRET="kwnfwknfoknfklw"
   - **Responses:** - `201 Created`: User successfully created. - `400 Bad Request`: All fields are required!. - `409 Conflict`: User with the provided username or email already exists. - `500 Internal Server Error`: Server error.
 
         **Request Body Example**
+        
         ```json
-
     {
     "name": "test",
     "email": "test@gmail.com",
@@ -86,8 +86,8 @@ JWT_SECRET="kwnfwknfoknfklw"
   - **Responses:** - `200 Created`: Return user and token. - `400 Bad Request`: All fields are required!. - `401 Unauthorized`: Wrong Credentials. - `404 Conflict`: User email does not exist. - `500 Internal Server Error`: Internal Server error.
 
              **Request Body Example**
-        ```json
 
+        ```json
     {
     "email": "test@gmail.com",
     "password": "12345678"
@@ -120,12 +120,12 @@ JWT_SECRET="kwnfwknfoknfklw"
   - **Responses:** - `201 OK`: Order pizza data. - `400 Bad Request`: All fields are required!. - `400 Unauthorized`: Unauthorized. - `404 Not Found`: Pizza Type with this name not found. - `500 Internal Server Error`: Internal Server error.
 
          **Request Body Example**
-        ```json
 
+        ```json
     {
     "user_id":1,
     "quantity": 10,
-    "address": "hi",
+    "address": "New Delhi",
     "totalPrice":100,
     "pizzaType": "small"
     }
