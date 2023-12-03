@@ -17,8 +17,8 @@ This is a REST API built with Node,Express,prisma and PostgreSQL.
 
 ## How to run the Project
 - Git clone the project with ``` git clone https://github.com/goodluck04/pizza-api.git```
-- Requirements for running the server ```  node ande npm  ```
-- Install the dependancies `npm i` or `npm install` and activate it.
+- Requirements for running the server ```  node and npm  ```
+- Install the dependancies `npm i` or `npm install` 
 - create a migration file ```   npx prisma migrate dev --name init ```
 - Start the server with ```  npm run dev ```
 
